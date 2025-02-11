@@ -360,6 +360,23 @@
         gap: 0.5rem;
     }
 }
+
+.menu-toggle {
+    display: none; /* Sembunyikan tombol hamburger secara default */
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Tampilkan tombol hamburger hanya di layar kecil */
+    }
+}
+@media (min-width: 769px) {
+    .sidebar {
+        position: static; /* Kembalikan posisi sidebar ke normal di desktop */
+        transform: translateY(0); /* Pastikan sidebar selalu terlihat */
+        width: 250px; /* Sesuaikan lebar sidebar */
+    }
+}
     </style>
 </head>
 
@@ -833,10 +850,13 @@
         // Initialize
         updateDashboard();
 
-        // Mobile menu toggle
-            document.querySelector('.menu-toggle').addEventListener('click', function () {
-                document.querySelector('.sidebar').classList.toggle('active');
-            });
+
+            // Mobile menu toggle
+                document.querySelector('.menu-toggle').addEventListener('click', function () {
+                    if (window.innerWidth <= 768) { // Hanya aktif di layar kecil
+                        document.querySelector('.sidebar').classList.toggle('active');
+                    }
+                });
     </script>
     </body>
     
