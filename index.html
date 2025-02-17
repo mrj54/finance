@@ -18,7 +18,7 @@
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #7296a4;
         }
 
         .container {
@@ -33,18 +33,19 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: white;
+            background: rgba(230, 240, 242, 0.9);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
         }
 
         .logo {
             font-size: 1.5rem;
             font-weight: 500;
             font-family: 'Playfair Display', serif;
+            color: #7296a4;
         }
 
         .nav-links {
@@ -54,78 +55,122 @@
 
         .nav-links a {
             text-decoration: none;
-            color: #333;
+            color: #7296a4;
             transition: color 0.3s;
         }
 
         .nav-links a:hover {
-            color: #666;
-        }
-
-        .mobile-menu {
-            display: none;
-            cursor: pointer;
-            font-size: 1.5rem;
+            color: #9ebecb;
         }
 
         /* Hero Section */
         .hero {
-            padding-top: 80px;
-            text-align: center;
-            background: #fff;
+            position: relative;
+            height: 100vh;
+            background: url('img/Desain tanpa judul_20250217_025144_0000.png') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            margin-top: 0;
+            padding: 0;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            color: #fff;
+            text-align: left;
+            padding: 2rem;
+            border-radius: 15px;
         }
 
         .hero h1 {
-            font-size: 2rem;
+            font-size: 3.5rem;
+            font-weight: 600;
             margin-bottom: 0.5rem;
-            font-weight: 400;
             font-family: 'Playfair Display', serif;
-            opacity: 0;
-            transform: translateY(20px);
+            color: #fff;
             animation: fadeInUp 0.8s forwards;
         }
 
         .hero h2 {
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            font-style: italic;
-            color: #444;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
             font-family: 'Playfair Display', serif;
-            opacity: 0;
-            transform: translateY(20px);
+            color: #fff;
             animation: fadeInUp 0.8s 0.2s forwards;
         }
 
-        .hero-image {
-            width: 100%;
-            max-width: 1000px;
-            height: 300px;
-            margin: 2rem auto;
-            border-radius: 15px;
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(20px);
+        .welcome-text {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            color: #e6f0f2;
             animation: fadeInUp 0.8s 0.4s forwards;
         }
 
-        .hero-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+        .hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #e6f0f2;
+            max-width: 500px;
+            line-height: 1.6;
+            animation: fadeInUp 0.8s 0.6s forwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #7296a4;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s 0.8s forwards;
+        }
+
+        .cta-button:hover {
+            background: #9ebecb;
+            transform: translateY(-3px);
         }
 
         /* Information Section */
         .information {
             padding: 4rem 0;
             text-align: center;
+            background: #efefef;
+        }
+
+        .information h2 {
+            color: #7296a4;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 2rem;
         }
 
         .info-cards {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            margin-top: 2rem;
         }
 
         .info-card {
@@ -136,13 +181,13 @@
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.5s ease;
+            box-shadow: 0 2px 5px rgba(114, 150, 164, 0.2);
         }
 
         .info-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
         }
 
         .info-card h3 {
@@ -157,7 +202,14 @@
         /* Features Section */
         .features {
             padding: 4rem 0;
-            background: #f8f8f8;
+            background: #e6f0f2;
+        }
+
+        .features h2 {
+            color: #7296a4;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 2rem;
         }
 
         .feature-grid {
@@ -171,22 +223,42 @@
             padding: 2rem;
             border-radius: 15px;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 5px rgba(114, 150, 164, 0.2);
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
         }
 
         .feature-item img {
             width: 96px;
             height: 96px;
             margin-bottom: 1rem;
-            object-fit: contain;
+        }
+
+        .feature-item h3 {
+            color: #7296a4;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-item p {
+            color: #9ebecb;
         }
 
         /* Festival Section */
         .festivals {
             padding: 4rem 0;
+            background: #efefef;
+        }
+
+        .festivals h2 {
+            color: #7296a4;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 2rem;
         }
 
         .festival-grid {
@@ -215,75 +287,11 @@
             position: absolute;
             bottom: 20px;
             left: 20px;
-            background: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: transform 0.3s;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .visible {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .nav-links.active {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: white;
-                padding: 1rem;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            }
-
-            .mobile-menu {
-                display: block;
-            }
-
-            .hero-image {
-                height: 200px;
-            }
-
-            .info-cards,
-            .feature-grid,
-            .festival-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .info-card,
-            .festival-card {
-                height: 300px;
-            }
-        }
-
-           .festival-card .more-info {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
             background: #7296a4;
             padding: 0.8rem 1.5rem;
             border-radius: 25px;
             text-decoration: none;
-            color: #fff;
+            color: white;
             font-weight: 500;
             transition: all 0.3s ease;
         }
@@ -291,14 +299,12 @@
         .festival-card .more-info:hover {
             background: #9ebecb;
             transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        /* Footer Styles */
+        /* Footer */
         .footer {
             background: #e6f0f2;
             padding: 4rem 0 2rem;
-            margin-top: 4rem;
         }
 
         .footer-content {
@@ -315,28 +321,19 @@
             color: #7296a4;
             font-family: 'Playfair Display', serif;
             margin-bottom: 1.5rem;
-            font-size: 1.2rem;
         }
 
-        .footer-section p, 
+        .footer-section p,
         .footer-section a {
             color: #7296a4;
             text-decoration: none;
-            display: block;
             margin-bottom: 0.5rem;
-            transition: color 0.3s ease;
+            display: block;
+            transition: color 0.3s;
         }
 
         .footer-section a:hover {
             color: #9ebecb;
-        }
-
-        .footer-bottom {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid #cddee5;
-            text-align: center;
-            color: #7296a4;
         }
 
         .social-links {
@@ -354,22 +351,73 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background 0.3s ease;
+            transition: background 0.3s;
         }
 
         .social-links a:hover {
             background: #9ebecb;
         }
 
-        @media (max-width: 768px) {
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #cddee5;
+            text-align: center;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        @media (max-width: 480px) {
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #e6f0f2;
+                padding: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .info-cards,
+            .feature-grid,
+            .festival-grid,
             .footer-content {
                 grid-template-columns: 1fr;
+            }
+
+            .info-card,
+            .festival-card {
+                height: 300px;
             }
         }
     </style>
@@ -387,15 +435,17 @@
     </nav>
 
     <section class="hero" id="home">
-        <div class="container">
-            <h1>WELCOME AT JOGJA SINGGAH</h1>
-            <h2>Explore jogja with us</h2>
-            <div class="hero-image">
-                <img src="img/Desain tanpa judul_20250217_025144_0000.png" alt="Jogja panorama">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Bringing Simplicity</h1>
+                <h2>In The Furnishing Market</h2>
+                <p class="welcome-text">WELCOME AT JOGJA SINGGAH</p>
+                <p class="hero-description">Jogja Singgah simplifies the complete process of exploring Yogyakarta.
+                    Whether it's festivals, tourist attractions, or hotels, let us guide your journey.</p>
+                <a href="#explore" class="cta-button">Start Your Exploring Journey</a>
             </div>
         </div>
     </section>
-
     <section class="information">
         <div class="container">
             <h2>Information</h2>
