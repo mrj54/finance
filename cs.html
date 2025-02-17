@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogja Tourism Guide</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
+
+        :root {
+            --primary: #2B4B66;
+            --secondary: #c8553d;
+            --accent: #f4d03f;
+            --bg-light: #faf8f6;
+            --bg-dark: #1a1f25;
+            --text-primary: #2c3e50;
+            --text-secondary: #5d7183;
+            --card-light: #ffffff;
+            --card-dark: #2c3440;
+            --spacing-unit: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg-light);
+            color: var(--text-primary);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode {
+            background: var(--bg-dark);
+            color: #e2e8f0;
+        }
+
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: calc(var(--spacing-unit) * 4);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 4);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin-bottom: calc(var(--spacing-unit) * 6);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: var(--spacing-unit);
+            z-index: 100;
+        }
+
+        .dark-mode .header {
+            background: rgba(44, 52, 64, 0.95);
+        }
+
+        .title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: calc(var(--spacing-unit) * 2);
+            letter-spacing: -0.5px;
+        }
+
+        .dark-mode .title {
+            color: #f4d03f;
+        }
+
+        .controls {
+            display: flex;
+            gap: calc(var(--spacing-unit) * 2);
+            align-items: center;
+        }
+
+        .btn {
+            padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+            border: none;
+            border-radius: 12px;
+            background: var(--primary);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-unit);
+        }
+
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 2px solid var(--primary);
+            cursor: pointer;
+            font-size: 1.25rem;
+            padding: calc(var(--spacing-unit) * 1.5);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            color: var(--primary);
+        }
+
+        .dark-mode .theme-toggle {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: calc(var(--spacing-unit) * 4);
+            padding: calc(var(--spacing-unit) * 2);
+        }
+
+        .card {
+            background: var(--card-light);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .dark-mode .card {
+            background: var(--card-dark);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-image-container {
+            position: relative;
+            padding: calc(var(--spacing-unit) * 2);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 16px;
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover .card-image {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: calc(var(--spacing-unit) * 3);
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            letter-spacing: -0.5px;
+        }
+
+        .dark-mode .card-title {
+            color: var(--accent);
+        }
+
+        .card-text {
+            color: var(--text-secondary);
+            margin-bottom: calc(var(--spacing-unit) * 3);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .dark-mode .card-text {
+            color: #a0aec0;
+        }
+
+        .card-button {
+            width: 100%;
+            padding: calc(var(--spacing-unit) * 2);
+            border: none;
+            border-radius: 12px;
+            background: var(--primary);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-unit);
+        }
+
+        .card-button:hover {
+            background: var(--secondary);
+        }
+
+        .location-badge {
+            position: absolute;
+            top: calc(var(--spacing-unit) * 4);
+            left: calc(var(--spacing-unit) * 4);
+            background: rgba(255, 255, 255, 0.9);
+            padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2);
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-unit);
+            backdrop-filter: blur(4px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: calc(var(--spacing-unit) * 2);
+            }
+
+            .header {
+                padding: calc(var(--spacing-unit) * 1.5);
+                margin-bottom: calc(var(--spacing-unit) * 3);
+                flex-direction: row;
+                gap: calc(var(--spacing-unit) * 2);
+            }
+
+            .title {
+                font-size: 1.25rem;
+            }
+
+            .title i {
+                font-size: 1rem;
+            }
+
+            .controls {
+                gap: calc(var(--spacing-unit));
+            }
+
+            .btn {
+                padding: calc(var(--spacing-unit)) calc(var(--spacing-unit) * 1.5);
+                font-size: 0.875rem;
+            }
+
+            .theme-toggle {
+                padding: calc(var(--spacing-unit));
+                font-size: 1rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                gap: calc(var(--spacing-unit) * 3);
+                padding: calc(var(--spacing-unit));
+            }
+
+            .card-title {
+                font-size: 1.5rem;
+            }
+
+            .card-text {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">
+     
+            jogja singgah
+            </h1>
+            <div class="controls">
+                <button class="btn">
+                    <i class="fas fa-arrow-left"></i>
+                    Back
+                </button>
+                <button class="theme-toggle">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
+        </header>
+
+        <main class="grid">
+            <div class="card">
+                <div class="card-image-container">
+                    <div class="location-badge">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Central Jogja
+                    </div>
+                    <img src="img/20-4286588440.webp" alt="Malioboro Street" class="card-image">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">Malioboro Street</h2>
+                    <p class="card-text">Experience the vibrant heart of Jogja's culture, where traditional meets
+                        modern. Discover local artisans, taste authentic street food, and immerse yourself in the city's
+                        bustling atmosphere.</p>
+                    <button class="card-button">
+                        <i class="fas fa-compass"></i>
+                        Explore More
+                    </button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image-container">
+                    <div class="location-badge">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Magelang
+                    </div>
+                    <img src="img/borobudur.jpg" alt="Borobudur Temple" class="card-image">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">Borobudur Temple</h2>
+                    <p class="card-text">Step into history at the world's largest Buddhist temple, a UNESCO World
+                        Heritage site. Marvel at intricate stone carvings and witness breathtaking sunrise views over
+                        ancient stupas.</p>
+                    <button class="card-button">
+                        <i class="fas fa-compass"></i>
+                        Discover More
+                    </button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image-container">
+                    <div class="location-badge">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Kraton Area
+                    </div>
+                    <img src="img/download (13).jpg" alt="Taman Sari" class="card-image">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">Taman Sari</h2>
+                    <p class="card-text">Explore the mysterious water castle, once a royal garden of the Sultanate.
+                        Discover hidden pools, underground passages, and architectural marvels from the 18th century.
+                    </p>
+                    <button class="card-button">
+                        <i class="fas fa-compass"></i>
+                        Learn More
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const themeToggle = document.querySelector('.theme-toggle i');
+            themeToggle.className = document.body.classList.contains('dark-mode') ? 'fas fa-moon' : 'fas fa-sun';
+        }
+
+        document.querySelector('.theme-toggle').addEventListener('click', toggleTheme);
+
+        const cards = document.querySelectorAll('.card');
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            },
+            { threshold: 0.1 }
+        );
+
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+
+</html>
