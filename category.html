@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogja Singgah - Modern Tourism Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2C3E50;
+            --secondary: #3498DB;
+            --accent: #E74C3C;
+            --background: #ECF0F1;
+            --text: #2C3E50;
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: white;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navbar Styles */
+        nav {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #aec0cc;
+            letter-spacing: 1px;
+        }
+
+        .back-button {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            text-align: center;
+            padding: 6rem 0;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 400px;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Categories Grid */
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .category-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            height: 300px;
+            padding: 2rem;
+            transition: 0.4s ease;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(52, 152, 219, 0.1), rgba(46, 204, 113, 0.1));
+            opacity: 0;
+            transition: 0.4s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .category-card:hover::before {
+            opacity: 1;
+        }
+
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1.5rem;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .category-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .category-content {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+        }
+
+        .category-info {
+            flex: 1;
+            margin-bottom: 1rem;
+        }
+
+        .category-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .category-description {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .more-button-wrapper {
+            margin-top: auto;
+            text-align: right;
+        }
+
+        .more-button {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: 0.3s ease;
+            display: inline-block;
+        }
+
+        .more-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Footer Styles */
+        footer {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--glass-border);
+            padding: 4rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section {
+            padding: 1rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #3498db;
+        }
+
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #3498db;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--glass-border);
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .hero {
+                margin-top: 60px;
+                padding: 2rem 0;
+                height: 300px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .categories {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .category-card {
+                height: auto;
+                min-height: 250px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-section {
+                padding: 1.5rem;
+                text-align: center;
+            }
+
+            .footer-section h3 {
+                margin-bottom: 1.2rem;
+                font-size: 1.3rem;
+            }
+
+            .footer-section p {
+                margin-bottom: 0.8rem;
+                line-height: 1.8;
+            }
+
+            .footer-section:not(:last-child) {
+                border-bottom: 1px solid var(--glass-border);
+                padding-bottom: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            .social-links {
+                justify-content: center;
+                margin-top: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="container nav-content">
+            <div class="logo">Jogja Singgah.</div>
+            <button class="back-button">
+                <i class="fas fa-arrow-left"></i> Back
+            </button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="hero">
+            <img src="img/Desain tanpa judul_20250217_025144_0000.png" alt="Jogja Landscape" class="hero-image">
+            <div class="hero-content">
+                <h1>Explore Jogja</h1>
+                <p>Discover the perfect blend of tradition and modernity</p>
+            </div>
+        </div>
+
+        <div class="categories">
+            <div class="category-card">
+                <div class="category-icon">
+                    <img src="img/running.png" alt="Sport Center">
+                </div>
+                <div class="category-content">
+                    <div class="category-info">
+                        <h3 class="category-title">Sport Center</h3>
+                        <p class="category-description">Discover world-class sporting facilities and activities</p>
+                    </div>
+                    <div class="more-button-wrapper">
+                        <button class="more-button">Explore More</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">
+                    <img src="img/notebook.png" alt="Edu Wisata">
+                </div>
+                <div class="category-content">
+                    <div class="category-info">
+                        <h3 class="category-title">Edu Wisata</h3>
+                        <p class="category-description">Learn while exploring cultural heritage sites</p>
+                    </div>
+                    <div class="more-button-wrapper">
+                        <button class="more-button">Explore More</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">
+                    <img src="img/night.png" alt="Night Live">
+                </div>
+                <div class="category-content">
+                    <div class="category-info">
+                        <h3 class="category-title">Night Live</h3>
+                        <p class="category-description">Experience the vibrant nightlife of Jogja</p>
+                    </div>
+                    <div class="more-button-wrapper">
+                        <button class="more-button">Explore More</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">
+                    <img src="img/subscriber.png" alt="Popular">
+                </div>
+                <div class="category-content">
+                    <div class="category-info">
+                        <h3 class="category-title">Popular</h3>
+                        <p class="category-description">Must-visit destinations in Yogyakarta</p>
+                    </div>
+                    <div class="more-button-wrapper">
+                       <a href="cs.html"> <button class="more-button">Explore More</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">
+                    <img src="img/gem.png" alt="Hidden Gems">
+                </div>
+                <div class="category-content">
+                    <div class="category-info">
+                        <h3 class="category-title">Hidden Gems</h3>
+                        <p class="category-description">Discover Jogja's best-kept secrets</p>
+                    </div>
+                    <div class="more-button-wrapper">
+                        <button class="more-button">Explore More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Jogja Singgah</h3>
+                    <p>Your ultimate guide to exploring the cultural heart of Java. We help tourists and locals discover
+                        the magic of Yogyakarta through carefully curated experiences.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p>Home</p>
+                    <p>About Us</p>
+                    <p>Destinations</p>
+                    <p>Contact</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@jogjasinggah.com</p>
+                    <p>Phone: +62 274 123456</p>
+                    <p>Address: Jl. Malioboro No. 1, Yogyakarta, Indonesia</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for the latest updates and exclusive offers.</p>
+                    <button class="more-button">Subscribe Now</button>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Jogja Singgah. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
