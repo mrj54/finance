@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogja Explore</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+.logo-text {
+    font-family: 'Playfair Display', serif;
+}
+
+.nav-button {
+    transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+    transform: scale(1.05);
+}
+
+.explore-card {
+    transition: all 0.3s ease;
+}
+
+.explore-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-12">
+            <div class="flex items-center space-x-2">
+                <img src="img/night.jpg" alt="Elephant Creative Logo" class="w-12 h-12" />
+            </div>
+            <nav class="hidden md:flex space-x-4">
+                <button
+                    class="nav-button px-6 py-2 rounded-full border-2 border-gray-800 hover:bg-gray-800 hover:text-white transition-colors">
+                    Home
+                </button>
+                <button
+                    class="nav-button px-6 py-2 rounded-full border-2 border-gray-800 hover:bg-gray-800 hover:text-white transition-colors">
+                    About
+                </button>
+                <button
+                    class="nav-button px-6 py-2 rounded-full border-2 border-gray-800 hover:bg-gray-800 hover:text-white transition-colors">
+                    Explore
+                </button>
+            </nav>
+            <button class="md:hidden">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </header>
+
+        <!-- Hero Section -->
+        <div class="bg-gray-900 rounded-3xl p-8 mb-12 relative overflow-hidden">
+            <div class="flex flex-col items-center justify-center min-h-[300px]">
+                <h1 class="logo-text text-6xl md:text-7xl text-green-400 mb-4 text-center">Jogja<span
+                        class="text-white">explore</span></h1>
+                <img src="img/tourism.png" alt="Tugu Jogja" class="w-32 h-40 object-contain" />
+            </div>
+        </div>
+
+        <!-- Explore Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Vacation Card -->
+            <div class="explore-card bg-gray-900 rounded-2xl p-6 text-white cursor-pointer">
+                <div class="flex flex-col space-y-4">
+                    <img src="./assets/andong.png" alt="Horse Carriage" class="w-full h-32 object-contain" />
+                    <h3 class="text-xl font-semibold">Explore vacation Destination at jogja</h3>
+                    <div class="flex justify-end">
+                        <svg class="w-6 h-6 transform rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Festival Card -->
+            <div class="explore-card bg-white rounded-2xl p-6 cursor-pointer shadow-lg">
+                <div class="flex flex-col space-y-4">
+                    <h3 class="text-xl font-semibold">Explore festival at yogjakarta</h3>
+                    <div class="flex justify-end">
+                        <svg class="w-6 h-6 transform rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Card -->
+            <div class="explore-card bg-white rounded-2xl p-6 cursor-pointer shadow-lg">
+                <div class="flex flex-col space-y-4">
+                    <h3 class="text-xl font-semibold">Explore event at jogjakarta</h3>
+                    <div class="flex justify-end">
+                        <svg class="w-6 h-6 transform rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    // Mobile menu toggle
+    const menuButton = document.querySelector('button.md\\:hidden');
+    const nav = document.querySelector('nav');
+
+    menuButton.addEventListener('click', () => {
+        nav.classList.toggle('hidden');
+        nav.classList.toggle('flex');
+        nav.classList.toggle('flex-col');
+        nav.classList.toggle('absolute');
+        nav.classList.toggle('top-20');
+        nav.classList.toggle('right-4');
+        nav.classList.toggle('bg-white');
+        nav.classList.toggle('p-4');
+        nav.classList.toggle('rounded-lg');
+        nav.classList.toggle('shadow-lg');
+    });
+
+    // Add hover effects for explore cards
+    const cards = document.querySelectorAll('.explore-card');
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-5px)';
+            card.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+            card.style.boxShadow = '';
+        });
+    });
+
+</script>
+</body>
+
+</html>

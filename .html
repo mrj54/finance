@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summer Trip Travel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1a237e;
+            --secondary-blue: #3949ab;
+            --accent-orange: #ff5722;
+            --light-purple: #f5f7ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+        }
+
+        /* Header styles */
+        header {
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .logo img {
+            height: 24px;
+        }
+
+        nav a {
+            margin-left: 2rem;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-orange);
+        }
+
+        /* Hero section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            padding: 8rem 5% 4rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .search-box {
+            background: white;
+            padding: 0.5rem;
+            border-radius: 50px;
+            display: flex;
+            max-width: 400px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            outline: none;
+            border-radius: 25px;
+        }
+
+        .search-box button {
+            background: var(--accent-orange);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .search-box button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Services section */
+        .services {
+            margin-top: -50px;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 3;
+        }
+
+        .service-card {
+            background: var(--light-purple);
+            padding: 2rem;
+            border-radius: 1.5rem;
+            text-align: left;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .service-number {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Packages section */
+        .packages {
+            padding: 6rem 5%;
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .package-card {
+            background: white;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .package-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .package-content {
+            padding: 2rem;
+        }
+
+        .rating {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+
+        /* Featured section */
+        .featured {
+            background: white;
+            padding: 6rem 5%;
+        }
+
+        .featured-card {
+            background: var(--light-purple);
+            padding: 3rem;
+            border-radius: 2rem;
+            margin-top: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+
+        .price-tag {
+            font-size: 2.5rem;
+            color: var(--accent-orange);
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .feature-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            color: var(--accent-orange);
+            font-weight: bold;
+        }
+
+        /* Articles section */
+        .articles {
+            padding: 6rem 5%;
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .article-card {
+            position: relative;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .article-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .article-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .article-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+        }
+
+        /* Newsletter section */
+        .newsletter {
+            padding: 6rem 5%;
+            text-align: center;
+            background: white;
+        }
+
+        .newsletter h2 {
+            font-size: 2.5rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .newsletter form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .newsletter input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 2px solid #eee;
+            border-radius: 30px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .newsletter input:focus {
+            border-color: var(--accent-orange);
+            outline: none;
+        }
+
+        .newsletter button {
+            background: var(--accent-orange);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .newsletter button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-blue);
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .featured-card {
+                flex-direction: column;
+                padding: 2rem;
+                gap: 2rem;
+            }
+
+            .newsletter form {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Rest of the HTML structure remains largely the same but with added elements and classes -->
+    <header>
+        <div class="logo">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231a237e'%3E%3Cpath d='M12 3L4 9v12h16V9l-8-6zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 8.5 12 8.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5z'/%3E%3C/svg%3E"
+                alt="Logo">
+            Sunny Sunday
+        </div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#destination">Destination</a>
+            <a href="#feedback">Feedback</a>
+            <a href="#pricing">Pricing</a>
+        </nav>
+    </header>
+<section class="hero">
+    <div class="hero-content">
+        <h1>SUMMER TRIP!</h1>
+        <p>Every Sunday is a miracle for booking tickets, air tickets and other travel services for professionals.</p>
+        <div class="search-box">
+            <input type="text" placeholder="Enter location">
+            <button>Search</button>
+        </div>
+    </div>
+</section>
+
+<section class="services">
+    <div class="service-card">
+        <h3>Lot of Choices</h3>
+        <p>Amazing places we are going to recommend you!</p>
+    </div>
+    <div class="service-card">
+        <h3>Easy Booking</h3>
+        <p>Payment is simple and secure with us!</p>
+    </div>
+    <div class="service-card">
+        <h3>Best Tour Guide</h3>
+        <p>Our guides team will make your trip unforgettable</p>
+    </div>
+</section>
+
+<section class="packages">
+    <h2>SPECIAL PACKAGE</h2>
+    <div class="package-grid">
+        <div class="package-card">
+            <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963" alt="Venice">
+            <div class="package-content">
+                <h3>The Grand Canal</h3>
+                <p>Experience the beauty of Venice</p>
+            </div>
+        </div>
+        <div class="package-card">
+            <img src="https://images.unsplash.com/photo-1507666405895-422eee7d517f" alt="Hot Air Balloon">
+            <div class="package-content">
+                <h3>Balloon Tour</h3>
+                <p>Soar above the landscapes</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="featured">
+    <h2>FULL FEATURED ON WITH MORE THAN 200,000 USERS</h2>
+    <div class="featured-card">
+        <h3>Exclusive Package</h3>
+        <p>$1099/pack</p>
+        <ul>
+            <li>President suite room</li>
+            <li>Free breakfast and lunch</li>
+            <li>Free pick up</li>
+        </ul>
+    </div>
+</section>
+
+<section class="articles">
+    <h2>ARTICLES</h2>
+    <div class="article-grid">
+        <div class="article-card">
+            <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05" alt="Travel Trends">
+            <div class="article-content">
+                <h3>2023 Travel Trends!</h3>
+                <p>Discover the latest travel trends</p>
+            </div>
+        </div>
+        <div class="article-card">
+            <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c" alt="Discount">
+            <div class="article-content">
+                <h3>What? Discount of 50%</h3>
+                <p>Limited time offers available</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="newsletter">
+    <h2>GET STARTED AND EARLY UPDATE ABOUT OUR PACKAGE</h2>
+    <form>
+        <input type="email" placeholder="Enter your email">
+        <button type="submit">Get Started</button>
+    </form>
+</section>
+
+<footer>
+    <div class="logo">Sunny Sunday</div>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#destination">Destination</a>
+        <a href="#feedback">Feedback</a>
+        <a href="#pricing">Pricing</a>
+    </nav>
+    <p>© 2023 Every Sunday</p>
+</footer>
+    <!-- Add similar enhancements to the rest of the sections -->
+    <!-- ... Previous HTML sections with added elements and classes ... -->
+
+    <script>
+        // Enhanced animations and interactions
+        document.addEventListener('DOMContentLoaded', () => {
+            // Smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Parallax effect for hero section
+            window.addEventListener('scroll', () => {
+                const hero = document.querySelector('.hero');
+                const scrolled = window.pageYOffset;
+                hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+            });
+
+            // Animate cards on scroll
+            const animateOnScroll = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(animateOnScroll, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.service-card, .package-card, .article-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+
+</html>

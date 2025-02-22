@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogja Explore - Discover The Magic of Yogyakarta</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .transition-custom {
+            transition: all 0.3s ease;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-gradient {
+            background: linear-gradient(45deg, #2E7D32 0%, #388E3C 100%);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="fixed w-full bg-white/80 backdrop-blur-md z-50 shadow-sm">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <img src="/api/placeholder/48/48" alt="Logo" class="w-12 h-12" />
+                    <span class="logo-text text-xl font-bold">JogjaExplore</span>
+                </div>
+
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#home" class="transition-custom hover:text-green-600">Home</a>
+                    <a href="#destinations" class="transition-custom hover:text-green-600">Destinations</a>
+                    <a href="#events" class="transition-custom hover:text-green-600">Events</a>
+                    <a href="#gallery" class="transition-custom hover:text-green-600">Gallery</a>
+                    <a href="#contact" class="transition-custom hover:text-green-600">Contact</a>
+                </nav>
+
+                <div class="hidden md:flex space-x-4">
+                    <button
+                        class="px-6 py-2 rounded-full border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white transition-custom">
+                        Sign In
+                    </button>
+                    <button class="px-6 py-2 rounded-full bg-green-600 text-white hover:bg-green-700 transition-custom">
+                        Register
+                    </button>
+                </div>
+
+                <button class="md:hidden text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 bg-black/50 z-40 hidden">
+        <div class="bg-white w-64 h-full p-6">
+            <div class="flex justify-between items-center mb-8">
+                <span class="logo-text text-xl font-bold">Menu</span>
+                <button id="closeMenu" class="text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <nav class="flex flex-col space-y-4">
+                <a href="#home" class="hover:text-green-600">Home</a>
+                <a href="#destinations" class="hover:text-green-600">Destinations</a>
+                <a href="#events" class="hover:text-green-600">Events</a>
+                <a href="#gallery" class="hover:text-green-600">Gallery</a>
+                <a href="#contact" class="hover:text-green-600">Contact</a>
+            </nav>
+            <div class="mt-8 space-y-4">
+                <button class="w-full px-6 py-2 rounded-full border-2 border-green-600 text-green-600">
+                    Sign In
+                </button>
+                <button class="w-full px-6 py-2 rounded-full bg-green-600 text-white">
+                    Register
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-24">
+        <div class="hero-gradient rounded-3xl p-8 mb-12">
+            <div class="container mx-auto px-4 py-16">
+                <div class="flex flex-col items-center justify-center text-center">
+                    <h1 class="logo-text text-6xl md:text-7xl text-green-400 mb-4">
+                        Jogja<span class="text-white">explre</span>
+                    </h1>
+                    <p class="text-gray-300 text-lg mb-8 max-w-2xl">
+                        Discover the magic of Yogyakarta - where tradition meets modern culture in perfect harmony.
+                    </p>
+                    <img src="/api/placeholder/120/160" alt="Tugu Jogja" class="w-32 h-40 object-contain mb-8" />
+                    <button class="px-8 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition-custom">
+                        Start Exploring
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-gradient text-white py-12 rounded-3xl mb-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <h3 class="text-4xl font-bold mb-2">100+</h3>
+                    <p>Tourist Spots</p>
+                </div>
+                <div>
+                    <h3 class="text-4xl font-bold mb-2">50+</h3>
+                    <p>Cultural Events</p>
+                </div>
+                <div>
+                    <h3 class="text-4xl font-bold mb-2">1000+</h3>
+                    <p>Happy Visitors</p>
+                </div>
+                <div>
+                    <h3 class="text-4xl font-bold mb-2">30+</h3>
+                    <p>Local Guides</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Explore Cards -->
+    <section id="destinations" class="mb-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center">Explore Yogyakarta</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Vacation Card -->
+                <div class="card-hover bg-gray-900 rounded-2xl p-6 text-white cursor-pointer transition-custom">
+                    <div class="flex flex-col space-y-4">
+                        <img src="/api/placeholder/200/120" alt="Horse Carriage"
+                            class="w-full h-48 object-cover rounded-xl" />
+                        <h3 class="text-xl font-semibold">Explore Vacation Destinations</h3>
+                        <p class="text-gray-400">Discover breathtaking locations and hidden gems around Jogja.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-green-400">20+ Locations</span>
+                            <i class="fas fa-arrow-right transform rotate-45"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Festival Card -->
+                <div class="card-hover bg-white rounded-2xl p-6 cursor-pointer transition-custom shadow-lg">
+                    <div class="flex flex-col space-y-4">
+                        <img src="/api/placeholder/200/120" alt="Festival"
+                            class="w-full h-48 object-cover rounded-xl" />
+                        <h3 class="text-xl font-semibold">Cultural Festivals</h3>
+                        <p class="text-gray-600">Experience traditional ceremonies and modern celebrations.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-green-600">15+ Events</span>
+                            <i class="fas fa-arrow-right transform rotate-45"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Card -->
+                <div class="card-hover bg-white rounded-2xl p-6 cursor-pointer transition-custom shadow-lg">
+                    <div class="flex flex-col space-y-4">
+                        <img src="/api/placeholder/200/120" alt="Events" class="w-full h-48 object-cover rounded-xl" />
+                        <h3 class="text-xl font-semibold">Special Events</h3>
+                        <p class="text-gray-600">Join upcoming events and create memorable experiences.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-green-600">30+ Activities</span>
+                            <i class="fas fa-arrow-right transform rotate-45"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="bg-gray-900 rounded-3xl py-16 mb-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-2xl mx-auto">
+                <h2 class="text-3xl font-bold text-white mb-4">Stay Updated</h2>
+                <p class="text-gray-400 mb-8">Subscribe to our newsletter for the latest updates about events and
+                    destinations in Yogyakarta.</p>
+                <div class="flex flex-col md:flex-row gap-4 justify-center">
+                    <input type="email" placeholder="Enter your email" class="px-6 py-3 rounded-full flex-1 max-w-md" />
+                    <button class="px-8 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition-custom">
+                        Subscribe
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-20 pb-10">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <h3 class="logo-text text-2xl font-bold mb-4">JogjaExplore</h3>
+                    <p class="text-gray-400">Your ultimate guide to exploring the beauty and culture of Yogyakarta.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">About Us</a></li>
+                        <li><a href="#" class="hover:text-white">Destinations</a></li>
+                        <li><a href="#" class="hover:text-white">Events</a></li>
+                        <li><a href="#" class="hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact Us</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-phone mr-2"></i> +62 274 123456</li>
+                        <li><i class="fas fa-envelope mr-2"></i> info@jogjaexplore.com</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i> Malioboro Street, Yogyakarta</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm mb-4 md:mb-0">
+                        © 2024 JogjaExplore. All rights reserved.
+                    </p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const menuButton = document.querySelector('.fa-bars').parentElement;
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenu = document.getElementById('closeMenu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add scroll animation for header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+
+
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+
+                    // Add animation for cards
+                    const cards = document.querySelectorAll('.card-hover');
+                    const observerOptions = {
+                        threshold: 0.1
+                    };
+
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.style.opacity = '1';
+                                entry.target.style.transform = 'translateY(0)';
+                            }
+                        });
+                    }, observerOptions);
+
+                    cards.forEach(card => {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        observer.observe(card);
+                    });
+
+                    // Newsletter form validation
+                    const emailInput = document.querySelector('input[type="email"]');
+                    const subscribeButton = emailInput.nextElementSibling;
+
+                    subscribeButton.addEventListener('click', () => {
+                        const email = emailInput.value;
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                        if (!emailRegex.test(email)) {
+                            alert('Please enter a valid email address');
+                            return;
+                        }
+
+                        // Simulate subscription
+                        alert('Thank you for subscribing!');
+                        emailInput.value = '';
+                    });
+
+                    // Add scroll to top button
+                    const scrollButton = document.createElement('button');
+                    scrollButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
+                    scrollButton.className = 'fixed bottom-8 right-8 bg-green-600 text-white p-4 rounded-full shadow-lg opacity-0 transition-opacity duration-300 hover:bg-green-700';
+                    scrollButton.style.display = 'none';
+                    document.body.appendChild(scrollButton);
+
+                    window.addEventListener('scroll', () => {
+                        if (window.scrollY > 500) {
+                            scrollButton.style.display = 'block';
+                            setTimeout(() => {
+                                scrollButton.style.opacity = '1';
+                            }, 100);
+                        } else {
+                            scrollButton.style.opacity = '0';
+                            setTimeout(() => {
+                                scrollButton.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+
+                    scrollButton.addEventListener('click', () => {
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    });
+
+                    // Add loading animation
+                    window.addEventListener('load', () => {
+                        const preloader = document.createElement('div');
+                        preloader.className = 'fixed inset-0 bg-white z-50 flex items-center justify-center';
+                        preloader.innerHTML = `
+                <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-green-600"></div>
+            `;
+                        document.body.appendChild(preloader);
+
+                        setTimeout(() => {
+                            preloader.style.opacity = '0';
+                            setTimeout(() => {
+                                preloader.remove();
+                            }, 300);
+                        }, 1000);
+                    });
+
+                    // Add hover effect for navigation links
+                    const navLinks = document.querySelectorAll('nav a');
+                    navLinks.forEach(link => {
+                        link.addEventListener('mouseenter', () => {
+                            link.style.transform = 'translateY(-2px)';
+                        });
+
+                        link.addEventListener('mouseleave', () => {
+                            link.style.transform = 'translateY(0)';
+                        });
+                    });
+                </script>
+    </body>
+    
+    </html>
